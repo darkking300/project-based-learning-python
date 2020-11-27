@@ -10,8 +10,8 @@ def create_project_dir(baseUrl):
 
 
 def create_queue(baseUrl,baseDirectory):
-    queue_file = baseDirectory + "queue.txt"
-    crawled_file = baseDirectory + "crawled.txt"
+    queue_file = baseDirectory + "/queue.txt"
+    crawled_file = baseDirectory + "/crawled.txt"
     if not os.path.isfile(queue_file):
         print('Creating queue.txt at ', baseDirectory )
         writeFile(queue_file,baseUrl)
@@ -21,7 +21,33 @@ def create_queue(baseUrl,baseDirectory):
 
 
 
-def writeFile(fileName,param):
-    f = open(fileName,'w')
+def writeFile(filePath,param):
+    f = open(filePath,'w')
     f.write(param)
     f.close()        
+
+#add a new link to the file
+def addToFile(filePath,param):
+    with open(filePath,'a') as file:
+        file.write(param + '\n')
+
+#truncate the file
+def truncFile(filePath):
+    with open(filePath,'w'):
+        pass
+
+#Read a file and convert to set items
+def fileToSet(fileName):
+    results = set()
+    with open(fileName, 'rt') as f:
+        for line in f:
+            results.add(line.replace('\n','')) 
+    return results
+
+def setToFile(saidSet,fileName):
+    truncFile(fileName)
+    for link in sorted(saidSet):
+        addToFile(fileName,link)
+
+
+        
