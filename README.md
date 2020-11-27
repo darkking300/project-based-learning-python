@@ -1,2 +1,2 @@
-# project-based-learning-cpp
+# project-based-learning-python
 Personal Python Projects
