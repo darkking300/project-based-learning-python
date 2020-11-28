@@ -1,3 +1,7 @@
+'''
+A simple Python script thrown together to download images from 4chan
+Requires a valid url as parameter for operation.
+'''
 from urllib.request import Request, urlopen, URLopener  
 from html.parser import HTMLParser
 import os
